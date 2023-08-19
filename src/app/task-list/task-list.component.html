@@ -1,0 +1,16 @@
+<div class="task-list">
+  <div class="filter-buttons">
+    <button (click)="setFilter('All')" [class.active]="currentFilter === 'All'">All</button>
+    <button (click)="setFilter('Completed')" [class.active]="currentFilter === 'Completed'">Completed</button>
+    <button (click)="setFilter('Incomplete')" [class.active]="currentFilter === 'Incomplete'">Incomplete</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let task of filteredTasks">
+      <label>
+        <input type="checkbox" [(ngModel)]="task.completed" (change)="task.completed ? markAsCompleted(task) : markAsIncomplete(task)">
+        <span>{{ task.title }}</span>
+      </label>
+    </li>
+  </ul>
+</div>
